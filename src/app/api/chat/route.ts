@@ -61,7 +61,7 @@ export async function POST(req: Request, res: Response) {
         // 11. Handling GPT-4 model
         const llm = new LangchainOpenAI({
             openAIApiKey: process.env.OPENAI_API_KEY,
-            modelName: 'gpt-3.5-turbo'
+            modelName: 'gpt-4'
         });
         gptMessage = await llm.invoke(commonPrompt);
         introMessage = "GPT-4 here, ";
@@ -128,7 +128,6 @@ export async function POST(req: Request, res: Response) {
     // 18. Compile the full message and create the audio
     fullMessage = introMessage + gptMessage;
     base64Audio = await createAudio( fullMessage, voice);
-    
     
     // 19. Return the response
     return Response.json({ data: base64Audio, contentType: 'audio/mp3', model: modelName });

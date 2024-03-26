@@ -2,4 +2,3 @@
 const nextConfig = {}
 
 module.exports = nextConfig
-/workspaces/siri/src/app
